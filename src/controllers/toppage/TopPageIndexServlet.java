@@ -47,11 +47,11 @@ public class TopPageIndexServlet extends HttpServlet {
                                   .setParameter("employee", login_employee)
                                   .setFirstResult(15 * (page - 1))
                                   .setMaxResults(15)
-                                  .getResultList();
+                                  .getResultList(); //複数帰ってくるときに使用
 
         long reports_count = (long)em.createNamedQuery("getMyReportsCount", Long.class)
                                      .setParameter("employee", login_employee)
-                                     .getSingleResult();
+                                     .getSingleResult(); //一行しか帰ってこないときに使用
 
         em.close();
 

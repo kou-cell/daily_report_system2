@@ -6,7 +6,22 @@
         <c:choose>
             <c:when test="${report != null}">
                 <h2>日報　詳細ページ</h2>
-
+                <c:choose>
+                <c:when test="${EmployeeById == null}">
+                <form id="follow" method="POST" action="<c:url value='/follows/create' />">
+                    <input type="hidden" name="_token" value="${_token}" />
+                    <input type="hidden" name="followed_id" value="${report.employee.id}"/>  <!-- report.employee.idは日報作成者のid情報 -->
+                    <button type="submit">フォロー</button>
+                </form>
+                </c:when>
+                <c:otherwise>
+                <form id="follow" method="POST" action="<c:url value='/follows/destroy' />">
+                    <input type="hidden" name="_token" value="${_token}" />
+                    <input type="hidden" name="id" value="${report.employee.id}"/>
+                    <button type="submit">解除</button>
+                </form>
+                </c:otherwise>
+                </c:choose>
                 <table>
                     <tbody>
                         <tr>

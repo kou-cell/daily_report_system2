@@ -25,7 +25,9 @@ h1 {
 h2 {
     font-size: 36px;
     margin-bottom: 15px;
+    display: inline-block;
 }
+
 
 li {
     margin-top: 10px;
@@ -161,4 +163,9 @@ pre {
 
 h3 {
     font-size: larger;
+}
+
+#follow {
+    display: inline-block;
+    float: right;
 }
